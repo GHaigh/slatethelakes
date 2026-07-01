@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Slate the Lakes</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F5F0E8; --slate: #4A5568; --bracken: #8B6340;
+      --moss: #6B7C5C; --sand: #D4C9B0; --dark: #2C2C2A;
+      --green: #2D7D46; --red: #C0392B; --amber: #E67E22;
+    }
+
+    body { font-family: 'Lato', sans-serif; background: #f0f0f0; color: var(--slate); }
+
+    /* HEADER */
+    .admin-header {
+      background: var(--slate);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .admin-header h1 { color: var(--cream); font-family: 'Playfair Display', serif; font-size: 20px; }
+    .admin-header span { color: var(--sand); font-size: 12px; letter-spacing: 2px; }
+
+    /* LAYOUT */
+    .admin-wrap { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+
+    /* TABS */
+    .tabs { display: flex; gap: 4px; margin-bottom: 24px; border-bottom: 2px solid var(--sand); }
+    .tab-btn {
+      padding: 10px 24px; font-size: 13px; font-weight: 700; letter-spacing: 1px;
+      background: none; border: none; cursor: pointer; color: #888;
+      border-bottom: 2px solid transparent; margin-bottom: -2px;
+    }
+    .tab-btn.active { color: var(--bracken); border-bottom-color: var(--bracken); }
+
+    /* PANELS */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* CARDS */
+    .card {
+      background: #fff;
+      border-radius: 6px;
+      padding: 24px;
+      margin-bottom: 16px;
+      border: 1px solid var(--sand);
+    }
+    .card h2 { font-size: 16px; margin-bottom: 20px; color: var(--slate); font-family: 'Playfair Display', serif; }
+
+    /* FORM ELEMENTS */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-row.three { grid-template-columns: 1fr 1fr 1fr; }
+    .form-row.full { grid-template-columns: 1fr; }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--slate); }
+    .form-group input, .form-group textarea, .form-group select {
+      padding: 10px 12px;
+      border: 1.5px solid var(--sand);
+      border-radius: 4px;
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      color: var(--slate);
+      background: #fff;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      outline: none;
+      border-color: var(--bracken);
+    }
+    .form-group textarea { min-height: 100px; resize: vertical; }
+
+    /* CHECKBOX ROW */
+    .check-row { display: flex; align-items: center; gap: 10px; }
+    .check-row input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; }
+    .check-row label { font-size: 13px; cursor: pointer; }
+
+    /* STRIPE LINK */
+    .stripe-group { background: #f8f8f8; border: 1px solid var(--sand); border-radius: 4px; padding: 16px; }
+    .stripe-group h4 { font-size: 11px; letter-spacing: 2px; font-weight: 700; color: var(--slate); margin-bottom: 12px; }
+    .stripe-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+    .stripe-row input { padding: 8px 10px; border: 1px solid var(--sand); border-radius: 3px; font-size: 12px; font-family: 'Lato', sans-serif; width: 100%; }
+    .stripe-row input::placeholder { color: #aaa; }
+    .stripe-add { background: none; border: 1px dashed var(--sand); border-radius: 3px; padding: 6px 12px; font-size: 12px; cursor: pointer; color: #888; width: 100%; margin-top: 4px; }
+    .stripe-add:hover { border-color: var(--bracken); color: var(--bracken); }
+
+    /* BUTTONS */
+    .btn { padding: 10px 24px; border-radius: 4px; font-size: 12px; font-weight: 700; letter-spacing: 1px; cursor: pointer; border: none; }
+    .btn-save { background: var(--bracken); color: #fff; }
+    .btn-save:hover { background: #7a5636; }
+    .btn-delete { background: var(--red); color: #fff; }
+    .btn-delete:hover { background: #a93226; }
+    .btn-new { background: var(--moss); color: #fff; }
+    .btn-new:hover { background: #5a6b4a; }
+    .btn-export { background: var(--slate); color: #fff; }
+    .btn-cancel { background: var(--sand); color: var(--slate); }
+
+    /* PRODUCT LIST */
+    .product-list { display: flex; flex-direction: column; gap: 12px; }
+    .product-row {
+      background: #fff;
+      border: 1px solid var(--sand);
+      border-radius: 6px;
+      padding: 16px 20px;
+      display: grid;
+      grid-template-columns: 60px 1fr auto auto auto;
+      align-items: center;
+      gap: 16px;
+    }
+    .product-row img { width: 56px; height: 56px; object-fit: cover; border-radius: 4px; background: var(--sand); }
+    .product-row-name { font-weight: 700; font-size: 14px; margin-bottom: 3px; }
+    .product-row-meta { font-size: 12px; color: #888; }
+    .product-row-price { font-weight: 700; color: var(--bracken); font-size: 14px; white-space: nowrap; }
+    .badge-stall { background: var(--moss); color: #fff; font-size: 10px; letter-spacing: 1px; padding: 2px 8px; border-radius: 2px; }
+    .badge-draft { background: var(--amber); color: #fff; font-size: 10px; letter-spacing: 1px; padding: 2px 8px; border-radius: 2px; }
+
+    /* TOAST */
+    #toast {
+      position: fixed; bottom: 24px; right: 24px;
+      background: var(--green); color: #fff;
+      padding: 12px 24px; border-radius: 4px;
+      font-size: 13px; font-weight: 700; letter-spacing: 1px;
+      opacity: 0; transition: opacity 0.3s;
+      z-index: 999;
+    }
+    #toast.show { opacity: 1; }
+    #toast.error { background: var(--red); }
+
+    /* OUTPUT */
+    .output-box {
+      background: #1e1e1e; color: #d4d4d4;
+      border-radius: 4px; padding: 20px;
+      font-family: monospace; font-size: 12px;
+      line-height: 1.7; overflow-x: auto;
+      white-space: pre;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .btn-row { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+
+    /* IMAGE PREVIEW */
+    .img-preview { width: 120px; height: 120px; object-fit: cover; border-radius: 4px; border: 1px solid var(--sand); display: none; margin-top: 8px; }
+    .img-preview.show { display: block; }
+
+    /* MODAL */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; align-items: center; justify-content: center; }
+    .modal-overlay.show { display: flex; }
+    .modal { background: #fff; border-radius: 8px; padding: 32px; max-width: 500px; width: 90%; }
+    .modal h3 { font-size: 18px; margin-bottom: 12px; }
+    .modal p { font-size: 14px; color: #555; margin-bottom: 24px; line-height: 1.6; }
+    .modal .btn-row { margin-top: 0; }
+
+    @media (max-width: 768px) {
+      .form-row, .form-row.three { grid-template-columns: 1fr; }
+      .stripe-row { grid-template-columns: 1fr; }
+      .product-row { grid-template-columns: 60px 1fr; }
+      .product-row .product-row-price, .product-row .badge-stall, .product-row .badge-draft { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="admin-header">
+  <h1>Slate the Lakes — Admin</h1>
+  <span>PRODUCT MANAGER</span>
+</div>
+
+<div class="admin-wrap">
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('products')">Products</button>
+    <button class="tab-btn" onclick="showTab('add')">Add / Edit Product</button>
+    <button class="tab-btn" onclick="showTab('export')">Export Code</button>
+    <button class="tab-btn" onclick="showTab('guide')">How to Use</button>
+  </div>
+
+  <!-- PRODUCTS TAB -->
+  <div class="tab-panel active" id="tab-products">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <h2 style="font-size:18px;font-family:'Playfair Display',serif;">Your Products (<span id="product-count">0</span>)</h2>
+      <button class="btn btn-new" onclick="showTab('add');resetForm()">+ ADD NEW PRODUCT</button>
+    </div>
+    <div class="product-list" id="product-list"></div>
+  </div>
+
+  <!-- ADD/EDIT TAB -->
+  <div class="tab-panel" id="tab-add">
+    <div class="card">
+      <h2 id="form-title">Add New Product</h2>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>PRODUCT NAME *</label>
+          <input type="text" id="f-name" placeholder="e.g. Multi-Layer Highland Cow Wall Art">
+        </div>
+        <div class="form-group">
+          <label>PRODUCT ID (URL slug) *</label>
+          <input type="text" id="f-id" placeholder="e.g. highland-cow-wall-art">
+          <small style="font-size:11px;color:#888;">Lowercase, hyphens only. Auto-generated from name.</small>
+        </div>
+      </div>
+
+      <div class="form-row three">
+        <div class="form-group">
+          <label>COLLECTION *</label>
+          <select id="f-collection">
+            <option value="wall-art">Wall Art</option>
+            <option value="maps">Maps</option>
+            <option value="slate">Slate</option>
+            <option value="keyrings-gifts">Keyrings & Gifts</option>
+            <option value="personalised-signs">Personalised Signs</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>BASE PRICE (£) *</label>
+          <input type="number" id="f-price" placeholder="22" min="0" step="0.01">
+        </div>
+        <div class="form-group">
+          <label>BADGE LABEL</label>
+          <input type="text" id="f-badge" placeholder="e.g. BESTSELLER, SET OF 4">
+        </div>
+      </div>
+
+      <div class="form-row full">
+        <div class="form-group">
+          <label>DESCRIPTION *</label>
+          <textarea id="f-desc" placeholder="Short description shown on the product page..."></textarea>
+        </div>
+      </div>
+
+      <div class="form-row full">
+        <div class="form-group">
+          <label>BULLET POINT DETAILS (one per line)</label>
+          <textarea id="f-details" placeholder="Size: 30cm × 30cm&#10;Material: Oak veneer ply&#10;Dispatched within 2 days" style="min-height:120px;"></textarea>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>PRODUCT IMAGE PATH</label>
+          <input type="text" id="f-image" placeholder="images/my-product.png">
+          <small style="font-size:11px;color:#888;">Upload image to your GitHub repo /images/ folder first, then enter filename here.</small>
+        </div>
+        <div class="form-group">
+          <label>IMAGE PREVIEW URL (optional)</label>
+          <input type="text" id="f-image-preview-url" placeholder="Paste full URL to preview" oninput="previewImg(this.value)">
+          <img id="img-preview" class="img-preview" alt="Preview">
+        </div>
+      </div>
+
+      <!-- VARIANTS -->
+      <div class="card" style="background:#f8f8f8;margin-top:8px;">
+        <h4 style="font-size:11px;letter-spacing:2px;font-weight:700;margin-bottom:16px;">VARIANTS (Standard, Personalised, Set of 3 etc.)</h4>
+        <div id="variants-container"></div>
+        <button class="stripe-add" onclick="addVariant()">+ Add variant</button>
+      </div>
+
+      <!-- STRIPE LINKS -->
+      <div class="stripe-group" style="margin-top:16px;">
+        <h4>STRIPE PAYMENT LINKS</h4>
+        <p style="font-size:12px;color:#888;margin-bottom:12px;">Add a Stripe Payment Link for each variant above. Label must match variant name exactly.</p>
+        <div id="stripe-container"></div>
+        <button class="stripe-add" onclick="addStripeRow()">+ Add payment link</button>
+      </div>
+
+      <!-- OPTIONS -->
+      <div style="display:flex;gap:24px;margin-top:20px;flex-wrap:wrap;">
+        <div class="check-row">
+          <input type="checkbox" id="f-atStall" checked>
+          <label for="f-atStall">Show at the Stall</label>
+        </div>
+        <div class="check-row">
+          <input type="checkbox" id="f-active" checked>
+          <label for="f-active">Active (visible on site)</label>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-save" onclick="saveProduct()">SAVE PRODUCT</button>
+        <button class="btn btn-cancel" onclick="resetForm()">CLEAR FORM</button>
+        <button class="btn btn-delete" id="delete-btn" onclick="deleteProduct()" style="display:none;">DELETE PRODUCT</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPORT TAB -->
+  <div class="tab-panel" id="tab-export">
+    <div class="card">
+      <h2>Export products.js</h2>
+      <p style="font-size:14px;color:#555;margin-bottom:20px;line-height:1.7;">
+        This generates the updated <code style="background:#f0f0f0;padding:2px 6px;border-radius:2px;">js/products.js</code> file for your GitHub repo. Copy the code below, replace the existing file in your GitHub repository, and commit — your site will update automatically.
+      </p>
+      <button class="btn btn-export" onclick="generateExport()">GENERATE products.js</button>
+      <div id="export-output" style="margin-top:16px;display:none;">
+        <div class="output-box" id="export-code"></div>
+        <div class="btn-row">
+          <button class="btn btn-save" onclick="copyExport()">COPY TO CLIPBOARD</button>
+          <button class="btn btn-export" onclick="downloadExport()">DOWNLOAD FILE</button>
+        </div>
+        <div style="margin-top:16px;background:#fff8e6;border:1px solid #f0c040;border-radius:4px;padding:16px;">
+          <p style="font-size:13px;color:#7a6000;font-weight:700;margin-bottom:6px;">How to update your site:</p>
+          <ol style="font-size:13px;color:#7a6000;line-height:2;margin-left:20px;">
+            <li>Click "Download File" above</li>
+            <li>Go to your GitHub repo (github.com/GHaigh/slatethelakes)</li>
+            <li>Click on <code>js/products.js</code></li>
+            <li>Click the pencil ✏️ edit icon</li>
+            <li>Select all the existing code and paste in the new code</li>
+            <li>Click "Commit changes"</li>
+            <li>Your site updates within 60 seconds</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Import existing products.js</h2>
+      <p style="font-size:14px;color:#555;margin-bottom:16px;">Paste your current products.js content here to load your existing products into this admin tool.</p>
+      <textarea id="import-code" style="width:100%;min-height:120px;padding:12px;border:1.5px solid var(--sand);border-radius:4px;font-family:monospace;font-size:12px;" placeholder="Paste your products.js content here..."></textarea>
+      <div class="btn-row">
+        <button class="btn btn-save" onclick="importProducts()">IMPORT PRODUCTS</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GUIDE TAB -->
+  <div class="tab-panel" id="tab-guide">
+    <div class="card">
+      <h2>How to use this admin tool</h2>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px;">
+        <div>
+          <h3 style="font-size:14px;font-weight:700;color:var(--bracken);margin-bottom:12px;">ADDING A NEW PRODUCT</h3>
+          <ol style="font-size:13px;line-height:2.2;color:#555;margin-left:20px;">
+            <li>Click <strong>Add / Edit Product</strong> tab</li>
+            <li>Fill in name, collection, price, badge</li>
+            <li>Write the description and bullet points</li>
+            <li>Upload your product photo to GitHub first: <code style="background:#f0f0f0;padding:1px 4px;font-size:11px;">images/your-product.png</code></li>
+            <li>Enter the image filename</li>
+            <li>Add variants (Standard, Personalised etc.)</li>
+            <li>Add Stripe Payment Links for each variant</li>
+            <li>Tick "Show at the Stall" if relevant</li>
+            <li>Click <strong>Save Product</strong></li>
+            <li>Go to <strong>Export Code</strong> tab</li>
+            <li>Click <strong>Generate products.js</strong></li>
+            <li>Download and push to GitHub</li>
+          </ol>
+        </div>
+        <div>
+          <h3 style="font-size:14px;font-weight:700;color:var(--bracken);margin-bottom:12px;">EDITING A PRODUCT</h3>
+          <ol style="font-size:13px;line-height:2.2;color:#555;margin-left:20px;">
+            <li>Go to <strong>Products</strong> tab</li>
+            <li>Click <strong>Edit</strong> on the product you want to change</li>
+            <li>Make your changes</li>
+            <li>Click <strong>Save Product</strong></li>
+            <li>Export and push updated products.js</li>
+          </ol>
+
+          <h3 style="font-size:14px;font-weight:700;color:var(--bracken);margin-top:24px;margin-bottom:12px;">UPLOADING PHOTOS TO GITHUB</h3>
+          <ol style="font-size:13px;line-height:2.2;color:#555;margin-left:20px;">
+            <li>Go to github.com/GHaigh/slatethelakes</li>
+            <li>Click into the <code style="background:#f0f0f0;padding:1px 4px;font-size:11px;">images</code> folder</li>
+            <li>Click <strong>Add file → Upload files</strong></li>
+            <li>Drag your product photo in</li>
+            <li>Commit — use filename like <code style="background:#f0f0f0;padding:1px 4px;font-size:11px;">my-product.png</code></li>
+            <li>Enter that filename in the admin form</li>
+          </ol>
+        </div>
+      </div>
+
+      <div style="background:#f0f8f4;border:1px solid #a8d8bc;border-radius:4px;padding:16px;margin-top:24px;">
+        <p style="font-size:13px;color:#1a5c38;font-weight:700;margin-bottom:6px;">💾 Your data is saved in this browser</p>
+        <p style="font-size:13px;color:#1a5c38;">Products you add are saved in your browser's localStorage, so they persist between sessions on the same computer. Always export and push to GitHub to make changes live on the site.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- DELETE CONFIRM MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <h3>Delete this product?</h3>
+    <p>This will remove the product from your admin list. You'll need to export and push products.js to update the live site.</p>
+    <div class="btn-row">
+      <button class="btn btn-delete" onclick="confirmDelete()">DELETE</button>
+      <button class="btn btn-cancel" onclick="closeModal()">CANCEL</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================
+// STATE
+// ============================================
+let products = [];
+let editingId = null;
+let pendingDeleteId = null;
+
+// ============================================
+// INIT
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+  loadFromStorage();
+  renderProductList();
+  renderVariants();
+  renderStripeRows();
+
+  // Auto-generate slug from name
+  document.getElementById('f-name').addEventListener('input', function() {
+    if (!editingId) {
+      document.getElementById('f-id').value = this.value
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .trim();
+    }
+  });
+});
+
+// ============================================
+// STORAGE
+// ============================================
+function loadFromStorage() {
+  try {
+    const saved = localStorage.getItem('stl_products');
+    if (saved) products = JSON.parse(saved);
+  } catch(e) { products = []; }
+}
+
+function saveToStorage() {
+  localStorage.setItem('stl_products', JSON.stringify(products));
+}
+
+// ============================================
+// TABS
+// ============================================
+function showTab(name) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    if (b.textContent.toLowerCase().includes(name === 'add' ? 'add' : name === 'products' ? 'product' : name)) {
+      b.classList.add('active');
+    }
+  });
+  if (name === 'products') renderProductList();
+}
+
+// ============================================
+// PRODUCT LIST
+// ============================================
+function renderProductList() {
+  const list = document.getElementById('product-list');
+  document.getElementById('product-count').textContent = products.length;
+
+  if (products.length === 0) {
+    list.innerHTML = '<div class="card" style="text-align:center;color:#888;padding:40px;">No products yet — click "Add New Product" to get started.</div>';
+    return;
+  }
+
+  list.innerHTML = products.map(p => `
+    <div class="product-row">
+      <img src="${p.image || ''}" alt="${p.name}" onerror="this.style.background='var(--sand)'">
+      <div>
+        <div class="product-row-name">${p.name}</div>
+        <div class="product-row-meta">${p.collection} &nbsp;·&nbsp; ${p.variants ? p.variants.length : 0} variants</div>
+      </div>
+      <div class="product-row-price">From £${p.price}</div>
+      ${p.atStall ? '<span class="badge-stall">STALL</span>' : '<span style="width:52px;display:inline-block;"></span>'}
+      ${p.active !== false ? '' : '<span class="badge-draft">DRAFT</span>'}
+      <button class="btn btn-save" style="font-size:11px;padding:6px 16px;" onclick="editProduct('${p.id}')">EDIT</button>
+    </div>
+  `).join('');
+}
+
+// ============================================
+// VARIANTS
+// ============================================
+let variantCount = 0;
+function renderVariants(variants) {
+  const c = document.getElementById('variants-container');
+  c.innerHTML = '';
+  variantCount = 0;
+  if (variants && variants.length) {
+    variants.forEach(v => addVariant(v));
+  } else {
+    addVariant();
+  }
+}
+
+function addVariant(value) {
+  const c = document.getElementById('variants-container');
+  const i = variantCount++;
+  const div = document.createElement('div');
+  div.className = 'stripe-row';
+  div.style.marginBottom = '8px';
+  div.innerHTML = `
+    <input type="text" placeholder="Variant name (e.g. Standard)" id="variant-${i}" value="${value || ''}" oninput="syncStripeLabels()">
+    <button onclick="this.parentElement.remove();syncStripeLabels()" style="padding:8px;border:1px solid #ddd;border-radius:3px;background:#fff;cursor:pointer;color:var(--red);font-size:12px;">✕ Remove</button>
+  `;
+  c.appendChild(div);
+}
+
+function syncStripeLabels() {
+  // keep stripe labels in sync with variant names
+  const stripeRows = document.querySelectorAll('.stripe-label');
+  const variants = getVariants();
+  stripeRows.forEach((row, i) => {
+    if (variants[i]) row.value = variants[i];
+  });
+}
+
+function getVariants() {
+  return Array.from(document.querySelectorAll('[id^="variant-"]'))
+    .map(el => el.value.trim())
+    .filter(Boolean);
+}
+
+// ============================================
+// STRIPE ROWS
+// ============================================
+let stripeCount = 0;
+function renderStripeRows(links) {
+  const c = document.getElementById('stripe-container');
+  c.innerHTML = '';
+  stripeCount = 0;
+  if (links && Object.keys(links).length) {
+    Object.entries(links).forEach(([label, url]) => addStripeRow(label, url));
+  } else {
+    addStripeRow();
+  }
+}
+
+function addStripeRow(label, url) {
+  const c = document.getElementById('stripe-container');
+  const i = stripeCount++;
+  const div = document.createElement('div');
+  div.className = 'stripe-row';
+  div.style.marginBottom = '8px';
+  div.innerHTML = `
+    <input type="text" class="stripe-label" placeholder="Variant name (e.g. Standard)" value="${label || ''}">
+    <input type="text" placeholder="https://buy.stripe.com/..." value="${url || ''}">
+  `;
+  c.appendChild(div);
+}
+
+function getStripeLinks() {
+  const rows = document.querySelectorAll('#stripe-container .stripe-row');
+  const links = {};
+  rows.forEach(row => {
+    const inputs = row.querySelectorAll('input');
+    const label = inputs[0].value.trim();
+    const url = inputs[1].value.trim();
+    if (label && url) links[label] = url;
+  });
+  return links;
+}
+
+// ============================================
+// SAVE PRODUCT
+// ============================================
+function saveProduct() {
+  const name = document.getElementById('f-name').value.trim();
+  const id = document.getElementById('f-id').value.trim();
+  const price = parseFloat(document.getElementById('f-price').value);
+
+  if (!name) { showToast('Please enter a product name', true); return; }
+  if (!id) { showToast('Please enter a product ID', true); return; }
+  if (!price || isNaN(price)) { showToast('Please enter a valid price', true); return; }
+
+  const details = document.getElementById('f-details').value
+    .split('\n').map(l => l.trim()).filter(Boolean);
+
+  const product = {
+    id,
+    name,
+    collection: document.getElementById('f-collection').value,
+    badge: document.getElementById('f-badge').value.trim() || 'NEW',
+    price,
+    image: document.getElementById('f-image').value.trim() || `images/${id}.png`,
+    description: document.getElementById('f-desc').value.trim(),
+    details,
+    variants: getVariants(),
+    stripeLinks: getStripeLinks(),
+    atStall: document.getElementById('f-atStall').checked,
+    active: document.getElementById('f-active').checked
+  };
+
+  if (editingId) {
+    const idx = products.findIndex(p => p.id === editingId);
+    if (idx !== -1) products[idx] = product;
+    showToast('Product updated successfully');
+  } else {
+    if (products.find(p => p.id === id)) {
+      showToast('A product with this ID already exists', true); return;
+    }
+    products.push(product);
+    showToast('Product added successfully');
+  }
+
+  saveToStorage();
+  renderProductList();
+  resetForm();
+  showTab('products');
+}
+
+// ============================================
+// EDIT PRODUCT
+// ============================================
+function editProduct(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+
+  editingId = id;
+  document.getElementById('form-title').textContent = 'Edit Product';
+  document.getElementById('delete-btn').style.display = 'inline-block';
+
+  document.getElementById('f-name').value = p.name;
+  document.getElementById('f-id').value = p.id;
+  document.getElementById('f-collection').value = p.collection;
+  document.getElementById('f-badge').value = p.badge || '';
+  document.getElementById('f-price').value = p.price;
+  document.getElementById('f-image').value = p.image || '';
+  document.getElementById('f-desc').value = p.description || '';
+  document.getElementById('f-details').value = (p.details || []).join('\n');
+  document.getElementById('f-atStall').checked = p.atStall !== false;
+  document.getElementById('f-active').checked = p.active !== false;
+
+  renderVariants(p.variants || []);
+  renderStripeRows(p.stripeLinks || {});
+
+  showTab('add');
+  window.scrollTo(0, 0);
+}
+
+// ============================================
+// RESET FORM
+// ============================================
+function resetForm() {
+  editingId = null;
+  document.getElementById('form-title').textContent = 'Add New Product';
+  document.getElementById('delete-btn').style.display = 'none';
+  ['f-name','f-id','f-badge','f-price','f-image','f-desc','f-details','f-image-preview-url'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('f-collection').value = 'wall-art';
+  document.getElementById('f-atStall').checked = true;
+  document.getElementById('f-active').checked = true;
+  document.getElementById('img-preview').classList.remove('show');
+  renderVariants();
+  renderStripeRows();
+}
+
+// ============================================
+// DELETE PRODUCT
+// ============================================
+function deleteProduct() {
+  pendingDeleteId = editingId;
+  document.getElementById('modal').classList.add('show');
+}
+
+function confirmDelete() {
+  products = products.filter(p => p.id !== pendingDeleteId);
+  saveToStorage();
+  closeModal();
+  resetForm();
+  showTab('products');
+  showToast('Product deleted');
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('show');
+  pendingDeleteId = null;
+}
+
+// ============================================
+// EXPORT
+// ============================================
+function generateExport() {
+  const code = `// ============================================
+// SLATE THE LAKES — Product Data
+// Generated by Admin Tool on ${new Date().toLocaleDateString('en-GB')}
+// Edit products using the admin tool, then
+// export and replace this file in GitHub
+// ============================================
+
+const products = ${JSON.stringify(products, null, 2)};`;
+
+  document.getElementById('export-code').textContent = code;
+  document.getElementById('export-output').style.display = 'block';
+  showToast('Code generated — copy or download below');
+}
+
+function copyExport() {
+  const code = document.getElementById('export-code').textContent;
+  navigator.clipboard.writeText(code).then(() => showToast('Copied to clipboard'));
+}
+
+function downloadExport() {
+  const code = document.getElementById('export-code').textContent;
+  const blob = new Blob([code], { type: 'text/javascript' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'products.js';
+  a.click();
+  showToast('products.js downloaded');
+}
+
+// ============================================
+// IMPORT
+// ============================================
+function importProducts() {
+  try {
+    const code = document.getElementById('import-code').value.trim();
+    const match = code.match(/const products\s*=\s*(\[[\s\S]*?\]);/);
+    if (!match) { showToast('Could not find products array in the code', true); return; }
+    const imported = JSON.parse(match[1]);
+    products = imported;
+    saveToStorage();
+    renderProductList();
+    showToast(`Imported ${products.length} products successfully`);
+    document.getElementById('import-code').value = '';
+  } catch(e) {
+    showToast('Import failed — check the code format', true);
+  }
+}
+
+// ============================================
+// IMAGE PREVIEW
+// ============================================
+function previewImg(url) {
+  const img = document.getElementById('img-preview');
+  if (url) {
+    img.src = url;
+    img.classList.add('show');
+  } else {
+    img.classList.remove('show');
+  }
+}
+
+// ============================================
+// TOAST
+// ============================================
+function showToast(msg, error) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'show' + (error ? ' error' : '');
+  setTimeout(() => t.className = '', 3000);
+}
+</script>
+
+</body>
+</html>
