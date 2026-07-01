@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slate Coaster Set — Engraved Animals | Slate the Lakes</title>
+  <meta name="description" content="Natural Cumbrian slate coasters, laser engraved with bold animal designs. Sets of 4, personalised options available. Handmade in Threlkeld.">
+  <link rel="icon" href="../images/favicon-32x32.png">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="announcement">FREE UK SHIPPING ON ORDERS OVER £30 &nbsp;·&nbsp; HANDCRAFTED IN THRELKELD, CUMBRIA</div>
+
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="logo"><img src="../images/logo-horizontal.png" alt="Slate the Lakes"></a>
+    <nav class="nav-links">
+      <a href="../shop.html">Shop</a>
+      <a href="../collections/wall-art.html">Wall Art</a>
+      <a href="../collections/maps.html">Maps</a>
+      <a href="../collections/slate.html">Slate</a>
+      <a href="../collections/keyrings-gifts.html">Keyrings & Gifts</a>
+      <a href="../about.html">About</a>
+      <a href="../stall.html" class="nav-cta">AT THE STALL</a>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<div style="max-width:1200px;margin:0 auto;padding:16px 24px;font-size:12px;color:#888;letter-spacing:1px;">
+  <a href="../index.html" style="color:#888;">HOME</a> &nbsp;/&nbsp;
+  <a href="../collections/slate.html" style="color:#888;">SLATE</a> &nbsp;/&nbsp;
+  COASTER SET
+</div>
+
+<div class="product-page">
+  <div class="product-gallery">
+    <div class="product-main-img">
+      <img src="../images/slate-coasters.png" alt="Slate Coaster Set">
+    </div>
+  </div>
+
+  <div class="product-info">
+    <span class="prod-badge">SET OF 4</span>
+    <h1>Slate Coaster Set — Engraved Animals</h1>
+    <div class="product-price" id="price-display">£28</div>
+
+    <div class="variant-label">DESIGN</div>
+    <div class="variant-options">
+      <button class="variant-btn active" onclick="selectVariant(this, 28, false)">Highland Cattle Set</button>
+      <button class="variant-btn" onclick="selectVariant(this, 28, false)">Mixed Animals</button>
+      <button class="variant-btn" onclick="selectVariant(this, 35, true)">Personalised (add name/initial)</button>
+    </div>
+
+    <div class="personalisation-box" id="pers-box">
+      <label for="pers-text">Name or initial to engrave</label>
+      <textarea id="pers-text" placeholder="e.g. The Jones Family, or just initials J.A.B..."></textarea>
+      <p style="font-size:11px;color:#888;margin-top:8px;">Engraved on each coaster. Allow 5 days for personalised sets.</p>
+    </div>
+
+    <p class="product-desc" style="margin-top:24px;">
+      Each coaster is cut from real natural slate and engraved with our bold line-art animal designs. No two pieces of slate are identical — the natural variation in colour and texture is what makes each set genuinely one of a kind. They're practical too, cork-backed to protect surfaces.
+    </p>
+
+    <details class="product-details" open>
+      <summary>Details & dimensions</summary>
+      <ul>
+        <li>Set of 4 coasters</li>
+        <li>Size: approx 10cm × 10cm each</li>
+        <li>Material: Natural slate, cork backing</li>
+        <li>Highland cattle set: 4 different highland cow designs</li>
+        <li>Mixed animals: cow, bear, heron, and one more</li>
+        <li>Dispatched within 2 days (5 days for personalised)</li>
+      </ul>
+    </details>
+
+    <details class="product-details">
+      <summary>Shipping & returns</summary>
+      <ul>
+        <li>Free UK shipping on orders over £30</li>
+        <li>Carefully packaged — slate is fragile in transit</li>
+        <li>Tracked Royal Mail delivery, 2–3 days</li>
+        <li>Returns accepted within 14 days for standard sets</li>
+      </ul>
+    </details>
+
+    <a href="#" class="buy-btn" id="buy-btn" onclick="buyNow(event)">BUY NOW — £28</a>
+    <p style="font-size:12px;color:#888;text-align:center;margin-top:12px;">Secure checkout via Stripe &nbsp;·&nbsp; All major cards accepted</p>
+  </div>
+</div>
+
+<div class="section" style="border-top:1px solid var(--sand);">
+  <p class="section-label">YOU MIGHT ALSO LIKE</p>
+  <h2 class="section-title">More pieces</h2>
+  <div class="products-grid">
+    <a href="highland-cow-wall-art.html" class="prod-card">
+      <div class="prod-img"><img src="../images/highland-cow-wall-art.png" alt="Highland Cow Wall Art" onerror="this.parentElement.style.background='var(--sand)'"></div>
+      <div class="prod-info"><span class="prod-badge">BESTSELLER</span><div class="prod-name">Multi-Layer Highland Cow Wall Art</div><div class="prod-price">From £55</div></div>
+    </a>
+    <a href="tarn-keyring.html" class="prod-card">
+      <div class="prod-img"><img src="../images/tarn-keyring.png" alt="Tarn Keyring" onerror="this.parentElement.style.background='var(--sand)'"></div>
+      <div class="prod-info"><span class="prod-badge">PERFECT GIFT</span><div class="prod-name">Tarn Keyring</div><div class="prod-price">From £8</div></div>
+    </a>
+    <a href="personalised-sign.html" class="prod-card">
+      <div class="prod-img"><img src="../images/personalised-sign.png" alt="Personalised Sign" onerror="this.parentElement.style.background='var(--sand)'"></div>
+      <div class="prod-info"><span class="prod-badge">MADE TO ORDER</span><div class="prod-name">Personalised Farm Sign</div><div class="prod-price">From £35</div></div>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><img src="../images/logo-horizontal.png" alt="Slate the Lakes"><p>Handmade laser cut gifts from the heart of the Lake District — crafted beneath Blencathra in Threlkeld, Cumbria.</p></div>
+    <div class="footer-col"><h4>SHOP</h4><a href="../collections/wall-art.html">Wall Art</a><a href="../collections/maps.html">Maps</a><a href="../collections/slate.html">Slate</a><a href="../collections/keyrings-gifts.html">Keyrings & Gifts</a><a href="../collections/personalised-signs.html">Personalised Signs</a></div>
+    <div class="footer-col"><h4>INFO</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../shipping.html">Shipping & Returns</a><a href="mailto:hello@slatethelakes.co.uk">hello@slatethelakes.co.uk</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 Slate the Lakes. Crafted in Threlkeld, Cumbria.</p><p>Payments secured by Stripe</p></div>
+</footer>
+
+<script>
+  let currentPrice = 28;
+  let isPersonalised = false;
+  const stripeLinks = {
+    standard: 'https://buy.stripe.com/YOUR_COASTER_STANDARD_LINK',
+    personalised: 'https://buy.stripe.com/YOUR_COASTER_PERS_LINK'
+  };
+
+  function selectVariant(btn, price, pers) {
+    document.querySelectorAll('.variant-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentPrice = price;
+    isPersonalised = pers;
+    document.getElementById('price-display').textContent = '£' + price;
+    document.getElementById('buy-btn').textContent = 'BUY NOW — £' + price;
+    document.getElementById('pers-box').classList.toggle('visible', pers);
+  }
+
+  function buyNow(e) {
+    e.preventDefault();
+    if (isPersonalised) {
+      const text = document.getElementById('pers-text').value.trim();
+      if (!text) { alert('Please enter your personalisation details.'); return; }
+      window.location.href = stripeLinks.personalised;
+    } else {
+      window.location.href = stripeLinks.standard;
+    }
+  }
+
+  function toggleMenu() {
+    const nav = document.querySelector('.nav-links');
+    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    if (nav.style.display === 'flex') { nav.style.flexDirection='column'; nav.style.position='absolute'; nav.style.top='80px'; nav.style.left='0'; nav.style.right='0'; nav.style.background='var(--cream)'; nav.style.padding='16px 24px'; nav.style.borderBottom='1px solid var(--sand)'; nav.style.gap='16px'; }
+  }
+</script>
+</body>
+</html>

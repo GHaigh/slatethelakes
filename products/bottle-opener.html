@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wooden Bottle Opener | Slate the Lakes</title>
+  <meta name="description" content="Laser cut solid oak bottle opener with stainless steel insert. Can be engraved with a name or message. Handmade in Threlkeld, Cumbria.">
+  <link rel="icon" href="../images/favicon-32x32.png">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="announcement">FREE UK SHIPPING ON ORDERS OVER £30 &nbsp;·&nbsp; HANDCRAFTED IN THRELKELD, CUMBRIA</div>
+
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="logo"><img src="../images/logo-horizontal.png" alt="Slate the Lakes"></a>
+    <nav class="nav-links">
+      <a href="../shop.html">Shop</a>
+      <a href="../collections/wall-art.html">Wall Art</a>
+      <a href="../collections/maps.html">Maps</a>
+      <a href="../collections/slate.html">Slate</a>
+      <a href="../collections/keyrings-gifts.html">Keyrings & Gifts</a>
+      <a href="../about.html">About</a>
+      <a href="../stall.html" class="nav-cta">AT THE STALL</a>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<div style="max-width:1200px;margin:0 auto;padding:16px 24px;font-size:12px;color:#888;letter-spacing:1px;">
+  <a href="../index.html" style="color:#888;">HOME</a> &nbsp;/&nbsp;
+  <a href="../collections/keyrings-gifts.html" style="color:#888;">KEYRINGS & GIFTS</a> &nbsp;/&nbsp;
+  BOTTLE OPENER
+</div>
+
+<div class="product-page">
+  <div class="product-gallery">
+    <div class="product-main-img">
+      <img src="../images/bottle-opener.png" alt="Wooden Bottle Opener">
+    </div>
+  </div>
+
+  <div class="product-info">
+    <span class="prod-badge">CAN BE ENGRAVED</span>
+    <h1>Wooden Bottle Opener</h1>
+    <div class="product-price" id="price-display">£18</div>
+
+    <div class="variant-label">OPTIONS</div>
+    <div class="variant-options">
+      <button class="variant-btn active" onclick="selectVariant(this, 18, false)">Standard</button>
+      <button class="variant-btn" onclick="selectVariant(this, 24, true)">Engraved — £24</button>
+    </div>
+
+    <div class="personalisation-box" id="pers-box">
+      <label for="pers-text">Name or short message to engrave</label>
+      <textarea id="pers-text" placeholder="e.g. Dave's Opener, The Lake District 2025, a short message..." style="min-height:60px;"></textarea>
+      <p style="font-size:11px;color:#888;margin-top:8px;">Keep it short — engraved on the handle. Allow 4 days.</p>
+    </div>
+
+    <p class="product-desc" style="margin-top:24px;">
+      Laser cut from solid English oak and fitted with a stainless steel opener insert, this is the kind of thing people pick up and immediately want to keep. The natural grain of the oak makes every one slightly different. Hang it in the kitchen, take it camping, or engrave it as a gift that'll actually get used.
+    </p>
+
+    <details class="product-details" open>
+      <summary>Details</summary>
+      <ul>
+        <li>Material: Solid English oak, stainless steel insert</li>
+        <li>Mounting hole at base for wall hanging</li>
+        <li>Engraving on the handle — name or short message</li>
+        <li>Standard: dispatched within 2 days</li>
+        <li>Engraved: dispatched within 4 days</li>
+      </ul>
+    </details>
+
+    <details class="product-details">
+      <summary>Shipping & returns</summary>
+      <ul>
+        <li>Free UK shipping on orders over £30</li>
+        <li>Standard Royal Mail delivery</li>
+        <li>Returns accepted within 14 days for standard version</li>
+        <li>Engraved versions cannot be returned unless faulty</li>
+      </ul>
+    </details>
+
+    <a href="#" class="buy-btn" id="buy-btn" onclick="buyNow(event)">BUY NOW — £18</a>
+    <p style="font-size:12px;color:#888;text-align:center;margin-top:12px;">Secure checkout via Stripe &nbsp;·&nbsp; All major cards accepted</p>
+  </div>
+</div>
+
+<div class="section" style="border-top:1px solid var(--sand);">
+  <p class="section-label">YOU MIGHT ALSO LIKE</p>
+  <h2 class="section-title">More gifts</h2>
+  <div class="products-grid">
+    <a href="tarn-keyring.html" class="prod-card">
+      <div class="prod-img"><img src="../images/tarn-keyring.png" alt="Tarn Keyring" onerror="this.parentElement.style.background='var(--sand)'"></div>
+      <div class="prod-info"><span class="prod-badge">PERFECT GIFT</span><div class="prod-name">Tarn Keyring</div><div class="prod-price">From £8</div></div>
+    </a>
+    <a href="slate-coaster-set.html" class="prod-card">
+      <div class="prod-img"><img src="../images/slate-coasters.png" alt="Slate Coasters" onerror="this.parentElement.style.background='var(--sand)'"></div>
+      <div class="prod-info"><span class="prod-badge">SET OF 4</span><div class="prod-name">Slate Coaster Set</div><div class="prod-price">£28</div></div>
+    </a>
+    <a href="personalised-sign.html" class="prod-card">
+      <div class="prod-img"><img src="../images/personalised-sign.png" alt="Personalised Sign" onerror="this.parentElement.style.background='var(--sand)'"></div>
+      <div class="prod-info"><span class="prod-badge">MADE TO ORDER</span><div class="prod-name">Personalised Farm Sign</div><div class="prod-price">From £35</div></div>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><img src="../images/logo-horizontal.png" alt="Slate the Lakes"><p>Handmade laser cut gifts from the heart of the Lake District — crafted beneath Blencathra in Threlkeld, Cumbria.</p></div>
+    <div class="footer-col"><h4>SHOP</h4><a href="../collections/wall-art.html">Wall Art</a><a href="../collections/maps.html">Maps</a><a href="../collections/slate.html">Slate</a><a href="../collections/keyrings-gifts.html">Keyrings & Gifts</a><a href="../collections/personalised-signs.html">Personalised Signs</a></div>
+    <div class="footer-col"><h4>INFO</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../shipping.html">Shipping & Returns</a><a href="mailto:hello@slatethelakes.co.uk">hello@slatethelakes.co.uk</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 Slate the Lakes. Crafted in Threlkeld, Cumbria.</p><p>Payments secured by Stripe</p></div>
+</footer>
+
+<script>
+  let currentPrice = 18;
+  let isEngraved = false;
+  const stripeLinks = {
+    standard: 'https://buy.stripe.com/YOUR_OPENER_STANDARD_LINK',
+    engraved: 'https://buy.stripe.com/YOUR_OPENER_ENGRAVED_LINK'
+  };
+
+  function selectVariant(btn, price, engraved) {
+    document.querySelectorAll('.variant-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentPrice = price;
+    isEngraved = engraved;
+    document.getElementById('price-display').textContent = '£' + price;
+    document.getElementById('buy-btn').textContent = 'BUY NOW — £' + price;
+    document.getElementById('pers-box').classList.toggle('visible', engraved);
+  }
+
+  function buyNow(e) {
+    e.preventDefault();
+    if (isEngraved) {
+      const text = document.getElementById('pers-text').value.trim();
+      if (!text) { alert('Please enter the text to engrave.'); return; }
+      window.location.href = stripeLinks.engraved;
+    } else {
+      window.location.href = stripeLinks.standard;
+    }
+  }
+
+  function toggleMenu() {
+    const nav = document.querySelector('.nav-links');
+    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    if (nav.style.display === 'flex') { nav.style.flexDirection='column'; nav.style.position='absolute'; nav.style.top='80px'; nav.style.left='0'; nav.style.right='0'; nav.style.background='var(--cream)'; nav.style.padding='16px 24px'; nav.style.borderBottom='1px solid var(--sand)'; nav.style.gap='16px'; }
+  }
+</script>
+</body>
+</html>

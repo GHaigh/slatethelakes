@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Slate the Lakes</title>
+  <meta name="description" content="Get in touch with Slate the Lakes — questions about orders, personalisation or custom pieces.">
+  <link rel="icon" href="images/favicon-32x32.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="announcement">FREE UK SHIPPING ON ORDERS OVER £30 &nbsp;·&nbsp; HANDCRAFTED IN THRELKELD, CUMBRIA</div>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo"><img src="images/logo-horizontal.png" alt="Slate the Lakes"></a>
+    <nav class="nav-links">
+      <a href="shop.html">Shop</a>
+      <a href="collections/wall-art.html">Wall Art</a>
+      <a href="collections/maps.html">Maps</a>
+      <a href="collections/slate.html">Slate</a>
+      <a href="collections/keyrings-gifts.html">Keyrings & Gifts</a>
+      <a href="about.html">About</a>
+      <a href="stall.html" class="nav-cta">AT THE STALL</a>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<div class="contact-wrap">
+  <h1>Get in touch</h1>
+  <p>Questions about an order, personalisation details, or something completely custom? We'd love to hear from you. We aim to reply within 24 hours.</p>
+
+  <form class="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+    <div class="form-group">
+      <label>YOUR NAME</label>
+      <input type="text" name="name" required placeholder="Your name">
+    </div>
+    <div class="form-group">
+      <label>EMAIL ADDRESS</label>
+      <input type="email" name="email" required placeholder="your@email.com">
+    </div>
+    <div class="form-group">
+      <label>SUBJECT</label>
+      <select name="subject">
+        <option>Question about an order</option>
+        <option>Personalised item enquiry</option>
+        <option>Custom piece request</option>
+        <option>Stall / wholesale enquiry</option>
+        <option>Something else</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>MESSAGE</label>
+      <textarea name="message" required placeholder="Tell us what you need..."></textarea>
+    </div>
+    <button type="submit" class="buy-btn" style="border:none;cursor:pointer;">SEND MESSAGE</button>
+  </form>
+
+  <div style="margin-top:48px;padding-top:32px;border-top:1px solid var(--sand);text-align:center;">
+    <p style="font-size:13px;color:#888;margin-bottom:8px;">Or email us directly at</p>
+    <a href="mailto:hello@slatethelakes.co.uk" style="color:var(--bracken);font-weight:700;font-size:15px;">hello@slatethelakes.co.uk</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><img src="images/logo-horizontal.png" alt="Slate the Lakes"><p>Handmade laser cut gifts from the heart of the Lake District — crafted beneath Blencathra in Threlkeld, Cumbria.</p></div>
+    <div class="footer-col"><h4>SHOP</h4><a href="collections/wall-art.html">Wall Art</a><a href="collections/maps.html">Maps</a><a href="collections/slate.html">Slate</a><a href="collections/keyrings-gifts.html">Keyrings & Gifts</a><a href="collections/personalised-signs.html">Personalised Signs</a></div>
+    <div class="footer-col"><h4>INFO</h4><a href="about.html">About</a><a href="contact.html">Contact</a><a href="shipping.html">Shipping & Returns</a><a href="mailto:hello@slatethelakes.co.uk">hello@slatethelakes.co.uk</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 Slate the Lakes. Crafted in Threlkeld, Cumbria.</p><p>Payments secured by Stripe</p></div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const nav = document.querySelector('.nav-links');
+    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    if (nav.style.display === 'flex') { nav.style.flexDirection='column'; nav.style.position='absolute'; nav.style.top='80px'; nav.style.left='0'; nav.style.right='0'; nav.style.background='var(--cream)'; nav.style.padding='16px 24px'; nav.style.borderBottom='1px solid var(--sand)'; nav.style.gap='16px'; }
+  }
+</script>
+</body>
+</html>

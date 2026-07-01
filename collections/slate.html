@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slate | Slate the Lakes</title>
+  <link rel="icon" href="../images/favicon-32x32.png">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<div class="announcement">FREE UK SHIPPING ON ORDERS OVER £30 &nbsp;·&nbsp; HANDCRAFTED IN THRELKELD, CUMBRIA</div>
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="logo"><img src="../images/logo-horizontal.png" alt="Slate the Lakes"></a>
+    <nav class="nav-links">
+      <a href="../shop.html">Shop</a>
+      <a href="wall-art.html">Wall Art</a>
+      <a href="maps.html">Maps</a>
+      <a href="slate.html">Slate</a>
+      <a href="keyrings-gifts.html">Keyrings & Gifts</a>
+      <a href="../about.html">About</a>
+      <a href="../stall.html" class="nav-cta">AT THE STALL</a>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</header>
+<div class="collection-header">
+  <h1 id="coll-title"></h1>
+  <p id="coll-desc"></p>
+</div>
+<div class="collection-grid" id="coll-grid"></div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><img src="../images/logo-horizontal.png" alt="Slate the Lakes"><p>Handmade laser cut gifts from the heart of the Lake District.</p></div>
+    <div class="footer-col"><h4>SHOP</h4><a href="wall-art.html">Wall Art</a><a href="maps.html">Maps</a><a href="slate.html">Slate</a><a href="keyrings-gifts.html">Keyrings & Gifts</a><a href="personalised-signs.html">Personalised Signs</a></div>
+    <div class="footer-col"><h4>INFO</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../shipping.html">Shipping & Returns</a><a href="mailto:hello@slatethelakes.co.uk">hello@slatethelakes.co.uk</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 Slate the Lakes. Crafted in Threlkeld, Cumbria.</p><p>Payments secured by Stripe</p></div>
+</footer>
+<script src="../js/products.js"></script>
+<script>
+  const collectionId = 'slate';
+  const meta = {
+    'maps': { title: 'Maps', desc: 'Laser cut Lake District maps with acrylic lake inlays — a beautiful way to mark a favourite place.' },
+    'slate': { title: 'Slate', desc: 'Engraved coasters and placemats cut from natural Cumbrian slate — every piece unique.' },
+    'keyrings-gifts': { title: 'Keyrings & Gifts', desc: 'Small handmade treasures — tarn keyrings, highland cow keyrings, wooden bottle openers and more.' },
+    'personalised-signs': { title: 'Personalised Signs', desc: 'Made to order with your name, farm, or message. Tell us what you\'d like and we\'ll create something one of a kind.' }
+  };
+  document.getElementById('coll-title').textContent = meta[collectionId].title;
+  document.getElementById('coll-desc').textContent = meta[collectionId].desc;
+  const grid = document.getElementById('coll-grid');
+  products.filter(p => p.collection === collectionId).forEach(p => {
+    grid.innerHTML += `<a href="../products/${p.id}.html" class="prod-card">
+      <div class="prod-img"><img src="../${p.image}" alt="${p.name}" onerror="this.parentElement.style.background='var(--sand)'"></div>
+      <div class="prod-info"><span class="prod-badge">${p.badge}</span><div class="prod-name">${p.name}</div><div class="prod-price">From £${p.price}</div></div>
+    </a>`;
+  });
+  function toggleMenu() {
+    const nav = document.querySelector('.nav-links');
+    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    if (nav.style.display === 'flex') { nav.style.flexDirection='column'; nav.style.position='absolute'; nav.style.top='80px'; nav.style.left='0'; nav.style.right='0'; nav.style.background='var(--cream)'; nav.style.padding='16px 24px'; nav.style.borderBottom='1px solid var(--sand)'; nav.style.gap='16px'; }
+  }
+</script>
+</body>
+</html>

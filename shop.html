@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop | Slate the Lakes</title>
+  <meta name="description" content="Shop all handmade laser cut gifts from Slate the Lakes — wall art, maps, slate coasters, keyrings and personalised signs, crafted in Threlkeld, Cumbria.">
+  <link rel="icon" href="images/favicon-32x32.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="announcement">FREE UK SHIPPING ON ORDERS OVER £30 &nbsp;·&nbsp; HANDCRAFTED IN THRELKELD, CUMBRIA</div>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo"><img src="images/logo-horizontal.png" alt="Slate the Lakes"></a>
+    <nav class="nav-links">
+      <a href="shop.html">Shop</a>
+      <a href="collections/wall-art.html">Wall Art</a>
+      <a href="collections/maps.html">Maps</a>
+      <a href="collections/slate.html">Slate</a>
+      <a href="collections/keyrings-gifts.html">Keyrings & Gifts</a>
+      <a href="about.html">About</a>
+      <a href="stall.html" class="nav-cta">AT THE STALL</a>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<div class="collection-header">
+  <h1>All Products</h1>
+  <p>Everything handmade in Threlkeld — wall art, maps, slate, keyrings and personalised pieces.</p>
+</div>
+
+<!-- FILTER BAR -->
+<div style="max-width:1200px;margin:0 auto;padding:24px 24px 0;display:flex;gap:10px;flex-wrap:wrap;">
+  <button class="variant-btn active" onclick="filterProducts('all', this)">All</button>
+  <button class="variant-btn" onclick="filterProducts('wall-art', this)">Wall Art</button>
+  <button class="variant-btn" onclick="filterProducts('maps', this)">Maps</button>
+  <button class="variant-btn" onclick="filterProducts('slate', this)">Slate</button>
+  <button class="variant-btn" onclick="filterProducts('keyrings-gifts', this)">Keyrings & Gifts</button>
+  <button class="variant-btn" onclick="filterProducts('personalised-signs', this)">Personalised Signs</button>
+</div>
+
+<div class="collection-grid" id="shop-grid"></div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><img src="images/logo-horizontal.png" alt="Slate the Lakes"><p>Handmade laser cut gifts from the heart of the Lake District — crafted beneath Blencathra in Threlkeld, Cumbria.</p></div>
+    <div class="footer-col"><h4>SHOP</h4><a href="collections/wall-art.html">Wall Art</a><a href="collections/maps.html">Maps</a><a href="collections/slate.html">Slate</a><a href="collections/keyrings-gifts.html">Keyrings & Gifts</a><a href="collections/personalised-signs.html">Personalised Signs</a></div>
+    <div class="footer-col"><h4>INFO</h4><a href="about.html">About</a><a href="contact.html">Contact</a><a href="shipping.html">Shipping & Returns</a><a href="mailto:hello@slatethelakes.co.uk">hello@slatethelakes.co.uk</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 Slate the Lakes. Crafted in Threlkeld, Cumbria.</p><p>Payments secured by Stripe</p></div>
+</footer>
+
+<script src="js/products.js"></script>
+<script>
+  function renderProducts(filter) {
+    const grid = document.getElementById('shop-grid');
+    const filtered = filter === 'all' ? products : products.filter(p => p.collection === filter);
+    grid.innerHTML = filtered.map(p => `
+      <a href="products/${p.id}.html" class="prod-card">
+        <div class="prod-img"><img src="${p.image}" alt="${p.name}" onerror="this.parentElement.style.background='var(--sand)'"></div>
+        <div class="prod-info">
+          <span class="prod-badge">${p.badge}</span>
+          <div class="prod-name">${p.name}</div>
+          <div class="prod-price">From £${p.price}</div>
+        </div>
+      </a>`).join('');
+  }
+
+  function filterProducts(filter, btn) {
+    document.querySelectorAll('.variant-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderProducts(filter);
+  }
+
+  renderProducts('all');
+
+  function toggleMenu() {
+    const nav = document.querySelector('.nav-links');
+    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    if (nav.style.display === 'flex') { nav.style.flexDirection='column'; nav.style.position='absolute'; nav.style.top='80px'; nav.style.left='0'; nav.style.right='0'; nav.style.background='var(--cream)'; nav.style.padding='16px 24px'; nav.style.borderBottom='1px solid var(--sand)'; nav.style.gap='16px'; }
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarn Keyring — Engraved Sheep Shape | Slate the Lakes</title>
+  <meta name="description" content="Oak Herdwick sheep keyrings engraved with Lake District tarn names. Perfect gift for walkers. Handmade in Threlkeld, Cumbria.">
+  <link rel="icon" href="../images/favicon-32x32.png">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div class="announcement">FREE UK SHIPPING ON ORDERS OVER £30 &nbsp;·&nbsp; HANDCRAFTED IN THRELKELD, CUMBRIA</div>
+
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="logo"><img src="../images/logo-horizontal.png" alt="Slate the Lakes"></a>
+    <nav class="nav-links">
+      <a href="../shop.html">Shop</a>
+      <a href="../collections/wall-art.html">Wall Art</a>
+      <a href="../collections/maps.html">Maps</a>
+      <a href="../collections/slate.html">Slate</a>
+      <a href="../collections/keyrings-gifts.html">Keyrings & Gifts</a>
+      <a href="../about.html">About</a>
+      <a href="../stall.html" class="nav-cta">AT THE STALL</a>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<div style="max-width:1200px;margin:0 auto;padding:16px 24px;font-size:12px;color:#888;letter-spacing:1px;">
+  <a href="../index.html" style="color:#888;">HOME</a> &nbsp;/&nbsp;
+  <a href="../collections/keyrings-gifts.html" style="color:#888;">KEYRINGS & GIFTS</a> &nbsp;/&nbsp;
+  TARN KEYRING
+</div>
+
+<div class="product-page">
+  <div class="product-gallery">
+    <div class="product-main-img">
+      <img src="../images/tarn-keyring.png" alt="Tarn Keyring Sheep Shape">
+    </div>
+  </div>
+
+  <div class="product-info">
+    <span class="prod-badge">PERFECT GIFT</span>
+    <h1>Tarn Keyring — Engraved Sheep Shape</h1>
+    <div class="product-price" id="price-display">£8</div>
+
+    <div class="variant-label">TARN NAME</div>
+    <div class="variant-options" style="flex-wrap:wrap;">
+      <button class="variant-btn active" onclick="selectVariant(this, 8, false)">Dock Tarn</button>
+      <button class="variant-btn" onclick="selectVariant(this, 8, false)">Blind Tarn</button>
+      <button class="variant-btn" onclick="selectVariant(this, 8, false)">Burnmoor Tarn</button>
+      <button class="variant-btn" onclick="selectVariant(this, 8, false)">Tarn Hows</button>
+      <button class="variant-btn" onclick="selectVariant(this, 8, false)">Blea Tarn</button>
+      <button class="variant-btn" onclick="selectVariant(this, 8, false)">Easedale Tarn</button>
+      <button class="variant-btn" onclick="selectVariant(this, 8, false)">Grisedale Tarn</button>
+      <button class="variant-btn" onclick="selectVariant(this, 8, false)">Innominate Tarn</button>
+      <button class="variant-btn" onclick="selectVariant(this, 10, true)">Custom tarn name — £10</button>
+    </div>
+
+    <div class="personalisation-box" id="pers-box">
+      <label for="pers-text">Your tarn name</label>
+      <textarea id="pers-text" placeholder="Enter the tarn name you'd like engraved..." style="min-height:60px;"></textarea>
+      <p style="font-size:11px;color:#888;margin-top:8px;">Can't see your tarn? We can engrave almost any Lake District tarn name. Allow 3 days.</p>
+    </div>
+
+    <p class="product-desc" style="margin-top:24px;">
+      Cut from solid oak in the shape of a Herdwick sheep and engraved with the name of a Lake District tarn, these keyrings are the perfect reminder of a favourite walk. Lightweight, durable, and guaranteed to spark a conversation about which route you took to get there.
+    </p>
+
+    <details class="product-details" open>
+      <summary>Details</summary>
+      <ul>
+        <li>Size: approx 6cm</li>
+        <li>Material: Solid oak, silver split ring</li>
+        <li>10+ tarn names available as standard — £8</li>
+        <li>Custom tarn name to order — £10, allow 3 days</li>
+        <li>Standard: dispatched next day</li>
+      </ul>
+    </details>
+
+    <details class="product-details">
+      <summary>Shipping & returns</summary>
+      <ul>
+        <li>Free UK shipping on orders over £30</li>
+        <li>Standard Royal Mail delivery</li>
+        <li>Returns accepted within 14 days for standard designs</li>
+      </ul>
+    </details>
+
+    <a href="#" class="buy-btn" id="buy-btn" onclick="buyNow(event)">BUY NOW — £8</a>
+    <p style="font-size:12px;color:#888;text-align:center;margin-top:12px;">Secure checkout via Stripe &nbsp;·&nbsp; All major cards accepted</p>
+  </div>
+</div>
+
+<div class="section" style="border-top:1px solid var(--sand);">
+  <p class="section-label">YOU MIGHT ALSO LIKE</p>
+  <h2 class="section-title">More small gifts</h2>
+  <div class="products-grid">
+    <a href="bottle-opener.html" class="prod-card">
+      <div class="prod-img"><img src="../images/bottle-opener.png" alt="Bottle Opener" onerror="this.parentElement.style.background='var(--sand)'"></div>
+      <div class="prod-info"><span class="prod-badge">CAN BE ENGRAVED</span><div class="prod-name">Wooden Bottle Opener</div><div class="prod-price">From £18</div></div>
+    </a>
+    <a href="slate-coaster-set.html" class="prod-card">
+      <div class="prod-img"><img src="../images/slate-coasters.png" alt="Slate Coasters" onerror="this.parentElement.style.background='var(--sand)'"></div>
+      <div class="prod-info"><span class="prod-badge">SET OF 4</span><div class="prod-name">Slate Coaster Set</div><div class="prod-price">£28</div></div>
+    </a>
+    <a href="personalised-sign.html" class="prod-card">
+      <div class="prod-img"><img src="../images/personalised-sign.png" alt="Personalised Sign" onerror="this.parentElement.style.background='var(--sand)'"></div>
+      <div class="prod-info"><span class="prod-badge">MADE TO ORDER</span><div class="prod-name">Personalised Farm Sign</div><div class="prod-price">From £35</div></div>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><img src="../images/logo-horizontal.png" alt="Slate the Lakes"><p>Handmade laser cut gifts from the heart of the Lake District — crafted beneath Blencathra in Threlkeld, Cumbria.</p></div>
+    <div class="footer-col"><h4>SHOP</h4><a href="../collections/wall-art.html">Wall Art</a><a href="../collections/maps.html">Maps</a><a href="../collections/slate.html">Slate</a><a href="../collections/keyrings-gifts.html">Keyrings & Gifts</a><a href="../collections/personalised-signs.html">Personalised Signs</a></div>
+    <div class="footer-col"><h4>INFO</h4><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../shipping.html">Shipping & Returns</a><a href="mailto:hello@slatethelakes.co.uk">hello@slatethelakes.co.uk</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 Slate the Lakes. Crafted in Threlkeld, Cumbria.</p><p>Payments secured by Stripe</p></div>
+</footer>
+
+<script>
+  let currentPrice = 8;
+  let isCustom = false;
+  const stripeLinks = {
+    standard: 'https://buy.stripe.com/YOUR_KEYRING_STANDARD_LINK',
+    custom: 'https://buy.stripe.com/YOUR_KEYRING_CUSTOM_LINK'
+  };
+
+  function selectVariant(btn, price, custom) {
+    document.querySelectorAll('.variant-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentPrice = price;
+    isCustom = custom;
+    document.getElementById('price-display').textContent = '£' + price;
+    document.getElementById('buy-btn').textContent = 'BUY NOW — £' + price;
+    document.getElementById('pers-box').classList.toggle('visible', custom);
+  }
+
+  function buyNow(e) {
+    e.preventDefault();
+    if (isCustom) {
+      const text = document.getElementById('pers-text').value.trim();
+      if (!text) { alert('Please enter your tarn name.'); return; }
+      window.location.href = stripeLinks.custom;
+    } else {
+      window.location.href = stripeLinks.standard;
+    }
+  }
+
+  function toggleMenu() {
+    const nav = document.querySelector('.nav-links');
+    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    if (nav.style.display === 'flex') { nav.style.flexDirection='column'; nav.style.position='absolute'; nav.style.top='80px'; nav.style.left='0'; nav.style.right='0'; nav.style.background='var(--cream)'; nav.style.padding='16px 24px'; nav.style.borderBottom='1px solid var(--sand)'; nav.style.gap='16px'; }
+  }
+</script>
+</body>
+</html>
