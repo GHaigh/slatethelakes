@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Slate the Lakes</title>
+  <meta name="description" content="Slate the Lakes — handmade laser cut gifts crafted beneath Blencathra in Threlkeld, Cumbria.">
+  <link rel="icon" href="images/favicon-32x32.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="announcement">
+  FREE UK SHIPPING ON ORDERS OVER £30 &nbsp;·&nbsp; HANDCRAFTED IN THRELKELD, CUMBRIA
+</div>
+
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="images/logo-horizontal.png" alt="Slate the Lakes">
+    </a>
+    <nav class="nav-links">
+      <a href="shop.html">Shop</a>
+      <a href="collections/wall-art.html">Wall Art</a>
+      <a href="collections/maps.html">Maps</a>
+      <a href="collections/slate.html">Slate</a>
+      <a href="collections/keyrings-gifts.html">Keyrings & Gifts</a>
+      <a href="about.html">About</a>
+      <a href="stall.html" class="nav-cta">AT THE STALL</a>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<div class="about-hero">
+  <h1>Crafted in Threlkeld</h1>
+  <p>A small maker business at the foot of Blencathra, in the heart of the Lake District.</p>
+</div>
+
+<div class="about-content">
+  <h2>The story</h2>
+  <p>Slate the Lakes started the way most good things do — making things for friends and family, then realising others might want them too. Based in Threlkeld, a small village beneath the great fell of Blencathra on the edge of the northern Lake District, every piece is designed and made here.</p>
+
+  <p>We use a laser cutter to create wall art, maps, coasters and keepsakes from natural materials — oak, birch ply, and real Cumbrian slate. The laser does the precision work, but each piece is hand-finished, checked and packaged individually. No two pieces of slate are the same. No two oak pieces grain exactly the same. That's what makes them worth having.</p>
+
+  <h2>The place</h2>
+  <p>Threlkeld sits between Blencathra and the A66, with Skiddaw to the west and the Helvellyn range to the south. It's proper Lakeland — fell farmers, old stone walls, red squirrels in the garden if you're lucky. That landscape shapes everything we make: the fell silhouettes, the tarn names, the animals that roam these hills.</p>
+
+  <p>If you're passing through on the A66, look out for our roadside stall. Scan the QR code, browse what's there, and pay by card on your phone. No queues, no fuss.</p>
+
+  <h2>Personalisation</h2>
+  <p>Almost anything we make can be personalised — a name, a farm, a tarn, a short message. We send a proof before we cut, so you know exactly what you're getting. Personalised orders take 3–5 days and are shipped tracked across the UK.</p>
+
+  <p>If you'd like something made that you can't see in the shop, just get in touch — we're always happy to have a conversation about custom pieces.</p>
+
+  <div style="margin-top:40px;text-align:center;">
+    <a href="shop.html" class="btn-primary">BROWSE THE SHOP</a>
+    &nbsp;&nbsp;
+    <a href="contact.html" class="btn-outline" style="color:var(--slate);border-color:var(--slate);">GET IN TOUCH</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="images/logo-horizontal.png" alt="Slate the Lakes">
+      <p>Handmade laser cut gifts from the heart of the Lake District — crafted beneath Blencathra in Threlkeld, Cumbria.</p>
+    </div>
+    <div class="footer-col">
+      <h4>SHOP</h4>
+      <a href="collections/wall-art.html">Wall Art</a>
+      <a href="collections/maps.html">Maps</a>
+      <a href="collections/slate.html">Slate</a>
+      <a href="collections/keyrings-gifts.html">Keyrings & Gifts</a>
+      <a href="collections/personalised-signs.html">Personalised Signs</a>
+    </div>
+    <div class="footer-col">
+      <h4>INFO</h4>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="shipping.html">Shipping & Returns</a>
+      <a href="mailto:hello@slatethelakes.co.uk">hello@slatethelakes.co.uk</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Slate the Lakes. Crafted in Threlkeld, Cumbria.</p>
+    <p>Payments secured by Stripe</p>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const nav = document.querySelector('.nav-links');
+    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    if (nav.style.display === 'flex') {
+      nav.style.flexDirection = 'column';
+      nav.style.position = 'absolute';
+      nav.style.top = '80px'; nav.style.left = '0'; nav.style.right = '0';
+      nav.style.background = 'var(--cream)';
+      nav.style.padding = '16px 24px';
+      nav.style.borderBottom = '1px solid var(--sand)';
+      nav.style.gap = '16px';
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slate the Lakes — Handmade Laser Cut Gifts from Threlkeld, Cumbria</title>
+  <meta name="description" content="Laser cut wall art, maps, slate coasters and personalised gifts, handcrafted beneath Blencathra in Threlkeld, Cumbria. UK shipping available.">
+  <link rel="icon" href="images/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announcement">
+  FREE UK SHIPPING ON ORDERS OVER £30 &nbsp;·&nbsp; HANDCRAFTED IN THRELKELD, CUMBRIA
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="images/logo-horizontal.png" alt="Slate the Lakes">
+    </a>
+    <nav class="nav-links">
+      <a href="shop.html">Shop</a>
+      <a href="collections/wall-art.html">Wall Art</a>
+      <a href="collections/maps.html">Maps</a>
+      <a href="collections/slate.html">Slate</a>
+      <a href="collections/keyrings-gifts.html">Keyrings & Gifts</a>
+      <a href="about.html">About</a>
+      <a href="stall.html" class="nav-cta">AT THE STALL</a>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <span class="hero-tag">HANDMADE IN CUMBRIA</span>
+    <h1>Crafted beneath Blencathra</h1>
+    <p>Laser cut wall art, maps, slate coasters and personalised keepsakes — each one made by hand in Threlkeld, at the foot of the fells.</p>
+    <div class="hero-btns">
+      <a href="shop.html" class="btn-primary">SHOP ALL PIECES</a>
+      <a href="collections/personalised-signs.html" class="btn-outline">PERSONALISE YOURS</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="images/highland-cow-wall-art.png" alt="Multi-layer Highland Cow Wall Art by Slate the Lakes">
+  </div>
+</section>
+
+<!-- COLLECTIONS -->
+<div class="section">
+  <p class="section-label">BROWSE BY COLLECTION</p>
+  <h2 class="section-title">Find something special</h2>
+  <p class="section-sub">From statement wall art to pocket-sized gifts — everything is made to order or ready to take home.</p>
+  <div class="collections-grid">
+    <a href="collections/wall-art.html" class="coll-card">
+      <div class="coll-img"><img src="images/highland-cow-wall-art.png" alt="Wall Art"></div>
+      <div class="coll-info">
+        <div class="coll-name">WALL ART</div>
+        <div class="coll-desc">Framed farm scenes & layered highland cattle portraits</div>
+      </div>
+    </a>
+    <a href="collections/maps.html" class="coll-card moss">
+      <div class="coll-img"><img src="images/keswick-map.png" alt="Maps"></div>
+      <div class="coll-info">
+        <div class="coll-name">MAPS</div>
+        <div class="coll-desc">Laser cut Lake District maps with acrylic lake inlays</div>
+      </div>
+    </a>
+    <a href="collections/slate.html" class="coll-card dark">
+      <div class="coll-img"><img src="images/slate-coasters.png" alt="Slate"></div>
+      <div class="coll-info">
+        <div class="coll-name">SLATE</div>
+        <div class="coll-desc">Engraved coasters & placemats on natural Cumbrian slate</div>
+      </div>
+    </a>
+    <a href="collections/keyrings-gifts.html" class="coll-card bracken">
+      <div class="coll-img"><img src="images/tarn-keyring.png" alt="Keyrings & Gifts"></div>
+      <div class="coll-info">
+        <div class="coll-name">KEYRINGS & GIFTS</div>
+        <div class="coll-desc">Tarn keyrings, highland cow heads & wooden bottle openers</div>
+      </div>
+    </a>
+    <a href="collections/personalised-signs.html" class="coll-card sand">
+      <div class="coll-img"><img src="images/personalised-sign.png" alt="Personalised Signs"></div>
+      <div class="coll-info">
+        <div class="coll-name" style="color:var(--slate)">PERSONALISED SIGNS</div>
+        <div class="coll-desc" style="color:var(--slate);opacity:0.7">Made to order with your name, farm or message</div>
+      </div>
+    </a>
+    <a href="stall.html" class="coll-card moss">
+      <div class="coll-img" style="background:rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;">
+        <span style="font-size:48px;">📍</span>
+      </div>
+      <div class="coll-info">
+        <div class="coll-name">AT THE STALL</div>
+        <div class="coll-desc">Ready to take home today — scan & buy at our Threlkeld roadside stall</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- FEATURE STRIP: PERSONALISATION -->
+<div class="feature-strip">
+  <div class="feature-inner">
+    <div>
+      <p class="feature-tag">PERSONALISED PIECES</p>
+      <h2>Made with your name, farm or favourite fell</h2>
+      <p>Every design can be personalised — a name, a tarn, a farm. Made to order and shipped anywhere in the UK, usually within 5 days.</p>
+      <a href="collections/personalised-signs.html" class="btn-primary">SEE PERSONALISED OPTIONS</a>
+    </div>
+    <div class="feature-img">
+      <img src="images/personalised-sign.png" alt="Personalised farm sign">
+    </div>
+  </div>
+</div>
+
+<!-- BESTSELLERS -->
+<div class="section">
+  <p class="section-label">POPULAR RIGHT NOW</p>
+  <h2 class="section-title">Bestsellers</h2>
+  <div class="products-grid" id="bestsellers">
+    <!-- populated by JS -->
+  </div>
+</div>
+
+<!-- STALL BAND -->
+<div class="stall-band">
+  <h2>Find us on the roadside in Threlkeld</h2>
+  <p>Browse and buy at our unattended stall on the A66 — scan the QR code below, shop and pay by card on your phone, and collect your piece right there.</p>
+  <div class="qr-placeholder">
+    <img src="images/stall-qr.png" alt="QR code for At the Stall collection" onerror="this.style.display='none'">
+    <p>SCAN TO SHOP</p>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-item-icon">📦</div>
+      <div class="trust-item-label">UK Shipping</div>
+      <div class="trust-item-sub">Free over £30. Tracked & posted within 2 days.</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-item-icon">✏️</div>
+      <div class="trust-item-label">Personalised</div>
+      <div class="trust-item-sub">Any design made to order in 3–5 days.</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-item-icon">🤍</div>
+      <div class="trust-item-label">Handmade</div>
+      <div class="trust-item-sub">Crafted one at a time in Threlkeld, Cumbria.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="images/logo-horizontal.png" alt="Slate the Lakes">
+      <p>Handmade laser cut gifts from the heart of the Lake District — crafted beneath Blencathra in Threlkeld, Cumbria.</p>
+    </div>
+    <div class="footer-col">
+      <h4>SHOP</h4>
+      <a href="collections/wall-art.html">Wall Art</a>
+      <a href="collections/maps.html">Maps</a>
+      <a href="collections/slate.html">Slate</a>
+      <a href="collections/keyrings-gifts.html">Keyrings & Gifts</a>
+      <a href="collections/personalised-signs.html">Personalised Signs</a>
+      <a href="stall.html">At the Stall</a>
+    </div>
+    <div class="footer-col">
+      <h4>INFO</h4>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="shipping.html">Shipping & Returns</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="mailto:hello@slatethelakes.co.uk">hello@slatethelakes.co.uk</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Slate the Lakes. Crafted in Threlkeld, Cumbria.</p>
+    <p>Payments secured by Stripe</p>
+  </div>
+</footer>
+
+<script src="js/products.js"></script>
+<script>
+  // Populate bestsellers
+  const bestsellersEl = document.getElementById('bestsellers');
+  const bestsellers = ['highland-cow-wall-art', 'keswick-map', 'tarn-keyring'];
+  bestsellers.forEach(id => {
+    const p = products.find(x => x.id === id);
+    if (!p) return;
+    bestsellersEl.innerHTML += `
+      <a href="products/${p.id}.html" class="prod-card">
+        <div class="prod-img"><img src="${p.image}" alt="${p.name}" onerror="this.parentElement.style.background='var(--sand)'"></div>
+        <div class="prod-info">
+          <span class="prod-badge">${p.badge}</span>
+          <div class="prod-name">${p.name}</div>
+          <div class="prod-price">From £${p.price}</div>
+          <div class="prod-sub">+ personalisation available</div>
+        </div>
+      </a>`;
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    const nav = document.querySelector('.nav-links');
+    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    if (nav.style.display === 'flex') {
+      nav.style.flexDirection = 'column';
+      nav.style.position = 'absolute';
+      nav.style.top = '80px';
+      nav.style.left = '0';
+      nav.style.right = '0';
+      nav.style.background = 'var(--cream)';
+      nav.style.padding = '16px 24px';
+      nav.style.borderBottom = '1px solid var(--sand)';
+      nav.style.gap = '16px';
+    }
+  }
+</script>
+
+</body>
+</html>
